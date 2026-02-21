@@ -1,0 +1,8 @@
+{
+  "name": "monobility",
+  "description": "A premium companion app for Electric Unicycle riders, featuring real-time telemetry, tour tracking, and AI-powered wheel diagnostics.",
+  "requestFramePermissions": [
+    "geolocation",
+    "camera"
+  ]
+}
