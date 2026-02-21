@@ -8,7 +8,7 @@ export enum AppView {
 }
 
 export type RideMode = 'Soft' | 'Medium' | 'Hard';
-export type WheelBrand = 'Begode' | 'Kingsong' | 'Inmotion' | 'Leaperkim' | 'Extreme Bull';
+export type WheelBrand = 'Begode' | 'Kingsong' | 'Inmotion' | 'Leaperkim' | 'Extreme Bull' | 'Nosfet' | 'Apex' | 'Aeon';
 export type RecordingStatus = 'idle' | 'recording' | 'paused';
 
 export interface WheelConfig {

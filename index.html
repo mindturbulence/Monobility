@@ -3,8 +3,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>monobility | Strava Edition</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#FC4C02">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="manifest" href="manifest.json">
+    
+    <title>monobility | Professional EUC Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -16,6 +21,8 @@
             color: #2D2D2D;
             overflow-x: hidden;
             -webkit-tap-highlight-color: transparent;
+            /* Prevent pull-to-refresh which can be annoying in a dashboard */
+            overscroll-behavior-y: contain;
         }
 
         .strava-orange { color: #FC4C02; }
@@ -28,16 +35,13 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 4px;
+        /* Hide scrollbars for a cleaner mobile UI */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
         }
-        ::-webkit-scrollbar-track {
-            background: #f4f4f4;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #FC4C02;
-            border-radius: 10px;
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
     </style>
 <script type="importmap">

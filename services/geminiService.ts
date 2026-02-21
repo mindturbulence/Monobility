@@ -6,6 +6,7 @@ const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
 
 export const analyzeRideData = async (telemetry: TelemetryData[]) => {
   const prompt = `Analyze the following Electric Unicycle (EUC) ride telemetry data. 
+  The rider is using a high-voltage performance wheel (potentially 126V, 134V, 151V, or 168V).
   Points: ${JSON.stringify(telemetry.slice(0, 50))}... 
   Provide a health report and efficiency summary.`;
 
@@ -38,9 +39,9 @@ export const analyzeRideData = async (telemetry: TelemetryData[]) => {
 export const getWheelExpertAdvice = async (userQuery: string, currentWheelState: TelemetryData) => {
   const response = await ai.models.generateContent({
     model: 'gemini-3-flash-preview',
-    contents: `The user asks: "${userQuery}". The current wheel state is: Speed ${currentWheelState.speed}km/h, Battery ${currentWheelState.battery}%, Temp ${currentWheelState.temperature}°C. Provide expert EUC advice.`,
+    contents: `The user asks: "${userQuery}". The current wheel state is: Speed ${currentWheelState.speed}km/h, Battery ${currentWheelState.battery}%, Temp ${currentWheelState.temperature}°C. Current Voltage is ${currentWheelState.voltage}V. Provide expert EUC advice.`,
     config: {
-        systemInstruction: "You are an expert Electric Unicycle (EUC) technician with 10 years of experience. You know all about Begode, Kingsong, Inmotion, and Leaperkim wheels. Be concise, safety-oriented, and technical when necessary."
+        systemInstruction: "You are an expert Electric Unicycle (EUC) technician. You have deep knowledge of modern wheels: Inmotion (V14, V13), Leaperkim (Sherman L, Lynx, Patton), Begode (ET-Max, Master series, Blitz), and Kingsong (F series, S22). You understand 100V to 168V systems, specialized boutique brands like Nosfet and Apex, and high-performance battery setups. Be technical, safety-oriented, and concise."
     }
   });
 
